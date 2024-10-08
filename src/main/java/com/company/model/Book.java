@@ -16,18 +16,18 @@ public class Book {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = false)
+    @Column(unique = false, nullable = false)
     private String title;
 
-    @Column(unique = false)
+    @Column(unique = false, nullable = false)
     private String author;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String isbn;
 
-    @Column(unique = false)
+    @Column(unique = false, nullable = false)
     private Integer publishedYear;
 
-    @Column(unique = false)
+    @Column(unique = false, nullable = false)
     private Double price;
 }

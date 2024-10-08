@@ -66,11 +66,4 @@ public class BookController {
         }
     }
 
-
-    @ExceptionHandler(ResponseStatusException.class)
-    public ResponseEntity<String> handleNotFound(ResponseStatusException ex) {
-        return ResponseEntity.status(ex.getStatusCode()).body(ex.getReason());
-    }
-
-
 }
