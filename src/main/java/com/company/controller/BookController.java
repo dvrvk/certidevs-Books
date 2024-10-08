@@ -55,6 +55,18 @@ public class BookController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        Optional<Book> book = this.repository.findById(id);
+        if(book.isPresent()) {
+            this.repository.delete(book.get());
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found");
+        }
+    }
+
+
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<String> handleNotFound(ResponseStatusException ex) {
         return ResponseEntity.status(ex.getStatusCode()).body(ex.getReason());
